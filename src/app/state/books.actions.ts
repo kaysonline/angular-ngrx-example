@@ -11,7 +11,15 @@ export const removeBook = createAction(
   props<{ bookId: string }>()
 );
 
+export const retrieveBooks = createAction('[Book List/API] Load Books');
+
 export const retrievedBookList = createAction(
   '[Book List/API] Retrieve Books Success',
-  props<{ books: ReadonlyArray<Book> }>()
+  // props<{ books: ReadonlyArray<Book> }>()
+  props<{ books: Book[] }>()
+);
+
+export const retrieveBookListFailure = createAction(
+  '[Book List/API] Retrieve Books Failure',
+  props<{ error: string }>()
 );
