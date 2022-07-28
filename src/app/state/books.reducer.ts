@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 
 import {
   retrieveBooks,
-  retrievedBookList,
+  retrieveBookListSuccess,
   retrieveBookListFailure,
 } from './books.actions';
 import { Book } from '../book-list/books.model';
@@ -27,7 +27,7 @@ export const booksReducer = createReducer(
   // Trigger loading the books
   on(retrieveBooks, (state) => ({ ...state, status: 'loading' })),
   // Handle successfully loaded books
-  on(retrievedBookList, (state, { books }) => ({
+  on(retrieveBookListSuccess, (state, { books }) => ({
     ...state,
     books: books,
     error: null,

@@ -9,7 +9,7 @@ import { AppState } from './app.state';
 import { GoogleBooksService } from '../book-list/books.service';
 import {
   retrieveBooks,
-  retrievedBookList,
+  retrieveBookListSuccess,
   retrieveBookListFailure,
 } from './books.actions';
 
@@ -29,7 +29,7 @@ export class BooksEffects {
         // Call the getBooks method, convert it to an observable
         this.booksService.getBooks().pipe(
           // Take the returned value and return a new success action containing the books
-          map((books) => retrievedBookList({ books: books })),
+          map((books) => retrieveBookListSuccess({ books: books })),
           // Or... if it errors return a new failure action containing the error
           catchError((error) => of(retrieveBookListFailure({ error })))
         )
